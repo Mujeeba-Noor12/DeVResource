@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/DeVResource/static/css/main.f0fe7e49.css",
+    "main.js": "/DeVResource/static/js/main.57bcbacb.js",
+    "static/media/codee.jpg": "/DeVResource/static/media/codee.13a7db1cc5b882a1840a.jpg",
+    "static/media/curve.png": "/DeVResource/static/media/curve.56154510c2eeb365d1b2.png",
+    "index.html": "/DeVResource/index.html",
+    "main.f0fe7e49.css.map": "/DeVResource/static/css/main.f0fe7e49.css.map",
+    "main.57bcbacb.js.map": "/DeVResource/static/js/main.57bcbacb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f0fe7e49.css",
+    "static/js/main.57bcbacb.js"
+  ]
+}
