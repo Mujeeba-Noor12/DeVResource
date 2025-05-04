@@ -1,26 +1,22 @@
-// "use client";
+"use client";
 
 import { useState, useEffect } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion } from "framer-motion";
 import { Menu, X, Code } from "lucide-react";
 
-
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const { scrollY } = useScroll();
+  const [isOpen, setIsOpen] = useState(false); // Tracks if the mobile menu is open
+  const [isScrolled, setIsScrolled] = useState(false); // Manages scroll behavior (removed scrollY)
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 50);
-  });
-
+  // Disable body scroll when the mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "auto"; // Reset overflow on unmount
     };
   }, [isOpen]);
 
+  // Animation variants for the navbar and links
   const navVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: {
@@ -46,6 +42,7 @@ export function Navbar() {
     }),
   };
 
+  // Define the navbar links
   const navLinks = [
     { name: "Tools", href: "#tools" },
     { name: "API Tools", href: "#api-tools" },
@@ -62,31 +59,31 @@ export function Navbar() {
       variants={navVariants}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-gray-900/80 backdrop-blur-lg shadow-lg"
-          : "bg-transparent"
+          ? "bg-gray-900/80 backdrop-blur-lg shadow-lg text-white"
+          : "bg-transparent text-gray-300"
       }`}
     >
       <div className="container mx-auto px-4 py-4">
-      <div className="flex items-center justify-between">
-      <div className="flex items-center gap-2">
-  <motion.div
-    className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center"
-    whileHover={{ scale: 1.05, rotate: 5 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <Code className="text-white" />
-  </motion.div>
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <motion.div
+              className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center"
+              whileHover={{ scale: 1.05, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Code className="text-white" />
+            </motion.div>
 
-  <motion.span
-    className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500"
-    initial={{ opacity: 0, x: -10 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ delay: 0.2 }}
-  >
-    DevResources
-  </motion.span>
-</div>
-
+            <motion.span
+              className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              DevResources
+            </motion.span>
+          </div>
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-8">
@@ -109,17 +106,9 @@ export function Navbar() {
                 </motion.div>
               ))}
             </nav>
-            <motion.div
-              variants={linkVariants}
-              custom={navLinks.length}
-              initial="hidden"
-              animate="visible"
-            >
-              
-            </motion.div>
           </div>
 
-          {/* Mobile Hamburger Icon - Only for md and below */}
+          {/* Mobile Hamburger Icon */}
           <motion.button
             className="md:hidden text-gray-200 focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
@@ -129,29 +118,24 @@ export function Navbar() {
             <Menu size={24} />
           </motion.button>
         </div>
-        </div>
+      </div>
 
-      {/* Mobile Menu (md:hidden) */}
+      {/* Mobile Menu */}
       {isOpen && (
         <motion.div
-          className="fixed inset-0 bg-gray-900/95 backdrop-blur-lg z-40 md:hidden pt-10 px-6"
+          className="fixed inset-0 bg-gray-900/95 backdrop-blur-lg z-50 md:hidden pt-10 px-6 overflow-y-auto"
           initial={{ opacity: 0, x: "100%" }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: "100%" }}
           transition={{ duration: 0.5 }}
         >
-          {/* Close Icon at Top Right */}
           <div className="flex justify-end">
-            <button
-              className="text-white"
-              onClick={() => setIsOpen(false)}
-            >
+            <button className="text-white" onClick={() => setIsOpen(false)}>
               <X size={28} />
             </button>
           </div>
 
-          {/* Mobile Links */}
-          <div className="flex flex-col h-full justify-center items-center space-y-8">
+          <div className="flex flex-col h-70 justify-center items-center space-y-8">
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.name}
@@ -165,10 +149,10 @@ export function Navbar() {
                 {link.name}
               </motion.a>
             ))}
-           
           </div>
         </motion.div>
       )}
     </motion.header>
   );
 }
+

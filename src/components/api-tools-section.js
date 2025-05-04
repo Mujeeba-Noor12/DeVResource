@@ -7,7 +7,7 @@ import { ExternalLink, Server, Database, Code, Lock, Globe, Zap, Webhook } from 
 
 export function ApiToolsSection() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, amount: 0.2 })
+  const isInView = useInView(ref, { once: false })
 
   const apiTools = [
     {

@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef ,useEffect,useState } from "react"
 import { motion, useInView } from "framer-motion"
 
 import { ExternalLink } from "lucide-react"
@@ -8,8 +8,11 @@ import { SiVuedotjs, SiNodedotjs  } from 'react-icons/si';
 
 export function ToolsSection() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, amount: 0.1})
+  const isInView = useInView(ref, { once: false})
+  
 
+  
+ 
   const categories = [
     {
       name: "Frontend",
@@ -279,6 +282,7 @@ export function ToolsSection() {
         </div>
 
         <div ref={ref} className="space-y-16">
+        
           {categories.map((category, categoryIndex) => (
             <motion.div key={category.name} className="mb-12">
               <motion.h3
@@ -357,3 +361,7 @@ export function ToolsSection() {
     </section>
   )
 }
+
+
+
+

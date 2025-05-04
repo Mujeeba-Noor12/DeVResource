@@ -7,7 +7,7 @@ import { ArrowUpRight, Users, MessageSquare, Globe, Github } from "lucide-react"
 
 export function CommunitySection() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, amount: 0.2 })
+  const isInView = useInView(ref, { once: false })
 
   const communities = [
     {

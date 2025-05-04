@@ -1,6 +1,7 @@
 import React from "react";
 import  HeroSection  from "./components/HeroSection.js";
-import { Navbar } from "./components/navbar.js";
+import  {Navbar}  from "./components/Navbar.js";
+
 import { ToolsSection } from "./components/tools-section.js";
 import { ResourcesSection } from "./components/resources-section.js";
 import { LearningSection } from "./components/learning-section.js";
@@ -9,11 +10,11 @@ import { ApiToolsSection } from "./components/api-tools-section.js";
 import { DeploymentSection } from "./components/deployment-section.js";
 import { Footer } from "./components/footer.js";
 import { ParticlesBackground } from "./components/particles-background.js";
-import { ScrollToSection } from "./components/scroll-to-section.js";
+// import  ScrollToSection from "./components/scroll-to-section.js";
 
 function App() {
   return (
-    <ScrollToSection>
+    // <ScrollToSection>
       <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-black text-white overflow-hidden">
         <ParticlesBackground />
         <Navbar />
@@ -40,8 +41,9 @@ function App() {
         </main>
         <Footer />
       </div>
-    </ScrollToSection>
+    // </ScrollToSection>
   );
 }
 
 export default App;
+

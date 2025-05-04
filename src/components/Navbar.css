@@ -1,0 +1,63 @@
+/* Navbar at top */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #0c111f;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .hamburger {
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Full screen overlay menu */
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0c111f;
+    color: white;
+    z-index: 999;
+    overflow-y: auto;
+    padding: 2rem;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .menu-content {
+    margin-top: 4rem;
+    text-align: center;
+  }
+  
+  .menu-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-content li {
+    font-size: 1.5rem;
+    margin: 1.5rem 0;
+    cursor: pointer;
+  }
+  
